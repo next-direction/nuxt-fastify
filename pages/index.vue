@@ -8,23 +8,29 @@
         <h2 class="subtitle">
             A full stack example application (excluding TypeScript for now)
         </h2>
+        <h3>List rendered from vuex store (list module)</h3>
         <ul>
             <li v-for="(person, index) in people" :key="index">
                 {{ person.name }}
             </li>
-        </ul>
-        Der Count ist {{ count }}
+        </ul><br><br>
+        <h3>Variable from root vuex store</h3>
+        Count {{ count }}
         <br><br>
+        <h3>Button from ElementUI (with tree shaking)</h3>
         <el-button type="danger">Gefahr</el-button><br><br>
-        <fa :icon="fa.faAddressBook" size="6x"></fa>
+        <h3>Icon from FontAwesome 5 (including tree shaking)</h3>
+        <fa :icon="fa.faAddressBook" size="6x"></fa><br><br>
+        <h3>Date with MomentJS (only german and english locale available)</h3>
+        Current date (german/english format possible) {{ now }}
         <br><br>
-        Aktuelles Datum {{ now }}
+        <h3 class="colored">Text colored with LESS variable</h3>
     </div>
 </section>
 </template>
 
 <script>
-import Logo from '@/components/Logo.vue';
+import Logo from "@/components/Logo.vue";
 import {
     Button
 } from "element-ui";
@@ -35,7 +41,7 @@ import {
 export default {
     computed: {
         now() {
-            return new this.$moment().format('DD. MMMM YYYY');
+            return new this.$moment().format("DD. MMMM YYYY");
         },
         fa() {
             return {
@@ -46,25 +52,28 @@ export default {
             return this.$store.getters.count;
         },
         people() {
-            return this.$store.getters['list/people'];
+            return this.$store.getters["list/people"];
         }
     },
     components: {
         "el-button": Button,
         Logo
     }
-}
+};
 </script>
 
-<style lang="less">
-@import '~assets/styles/site';
-
+<style lang="less" scoped>
+@import "~assets/styles/site";
 .container {
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+.colored {
+    color: @link-color;
 }
 
 .title {
@@ -87,5 +96,9 @@ export default {
 
 .links {
     padding-top: 15px;
+}
+
+ul {
+    list-style-type: none;
 }
 </style>
