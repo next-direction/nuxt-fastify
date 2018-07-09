@@ -39,12 +39,18 @@ module.exports = {
     /*
      ** Global CSS
      */
-    css: [],
+    css: [
+        '~assets/styles/site.less'
+    ],
 
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: [],
+    plugins: [
+        '~plugins/element-ui',
+        '~plugins/filters',
+        '~plugins/i18n.js'
+    ],
 
     /*
      ** Nuxt.js modules
@@ -94,7 +100,6 @@ module.exports = {
                 '_': 'lodash'
             })
         ]
-
-
-    }
+    },
+    transition: 'fade'
 }

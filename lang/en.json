@@ -1,0 +1,10 @@
+{
+    "common": {
+        "back": "Back"
+    },
+    "index": {
+        "subTitle": "A full stack example application (excluding TypeScript for now)",
+        "listStore": "List rendered from vuex store (store module \"list\")",
+        "variableStore": "Variable from root vuex store"
+    }
+}

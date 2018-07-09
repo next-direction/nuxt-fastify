@@ -1,0 +1,10 @@
+{
+    "common": {
+        "back": "Zurück"
+    },
+    "index": {
+        "subTitle": "Eine Full-Stack Beispielanwendung (erstmal ohne TypeScript)",
+        "listStore": "Liste aus dem Store erzeugt (Store Modul \"list\")",
+        "variableStore": "Variable aus dem Root Store"
+    }
+}

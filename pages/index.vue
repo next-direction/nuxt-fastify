@@ -6,64 +6,77 @@
             Full Stack App
         </h1>
         <h2 class="subtitle">
-            A full stack example application (excluding TypeScript for now)
+            {{ $t('index.subTitle') }}
         </h2>
-        <h3>List rendered from vuex store (list module)</h3>
+        <h3>{{ $t('index.listStore') }}</h3>
         <ul>
             <li v-for="(person, index) in people" :key="index">
                 {{ person.name }}
             </li>
         </ul><br><br>
-        <h3>Variable from root vuex store</h3>
+        <h3>{{ $t('index.variableStore') }}</h3>
         Count {{ count }}
         <br><br>
         <h3>Button from ElementUI (with tree shaking)</h3>
-        <el-button type="danger">Gefahr</el-button><br><br>
+        <el-button type="danger">Danger</el-button><br>
+        <h3>Button used as Nuxt Link</h3>
+        <nuxt-link to="/about" tag="el-button" class="el-button--danger">About</nuxt-link><br><br>
         <h3>Icon from FontAwesome 5 (including tree shaking)</h3>
         <fa :icon="fa.faAddressBook" size="6x"></fa><br><br>
         <h3>Date with MomentJS (only german and english locale available)</h3>
         Current date (german/english format possible) {{ now }}
         <br><br>
         <h3 class="colored">Text colored with LESS variable</h3>
+        <br><br>
+        <h3>Currency formatted with filter (registered as plugin)</h3>
+        {{ currencyValue | currency }}
     </div>
 </section>
 </template>
 
 <script>
 import Logo from "@/components/Logo.vue";
-import {
-    Button
-} from "element-ui";
+
+// here you can add any other icon you want (brands set is also available as dependency in package.json)
 import {
     faAddressBook
 } from "@fortawesome/free-solid-svg-icons";
 
+import {
+    mapGetters,
+    mapState
+} from 'vuex';
+
 export default {
+    data() {
+        return {
+            currencyValue: 123151
+        }
+    },
     computed: {
+        ...mapState(['count']), // map from root store
+        ...mapGetters('list', [ // map from list module of the store
+            'people'
+        ]),
         now() {
             return new this.$moment().format("DD. MMMM YYYY");
         },
         fa() {
+
+            // here you have to return all imported icons
             return {
                 faAddressBook
             };
-        },
-        count() {
-            return this.$store.getters.count;
-        },
-        people() {
-            return this.$store.getters["list/people"];
         }
     },
     components: {
-        "el-button": Button,
         Logo
     }
 };
 </script>
 
 <style lang="less" scoped>
-@import "~assets/styles/site";
+@import "~assets/styles/variables";
 .container {
     min-height: 100vh;
     display: flex;
