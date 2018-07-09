@@ -1,0 +1,32 @@
+{
+  "name": "full-stack",
+  "version": "1.0.0",
+  "description": "A full stack example application",
+  "author": "Manuel Hesselbarth",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.1.0",
+    "@fortawesome/free-solid-svg-icons": "^5.1.0",
+    "@nuxtjs/axios": "^5.0.0",
+    "@nuxtjs/moment": "^1.0.0",
+    "element-ui": "^2.4.3",
+    "express": "^4.15.3",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "nuxt": "^1.0.0",
+    "nuxt-fontawesome": "^0.3.0"
+  },
+  "devDependencies": {
+    "babel-plugin-component": "^1.1.1",
+    "cross-env": "^5.0.1",
+    "less": "^3.5.3",
+    "less-loader": "^4.1.0",
+    "nodemon": "^1.11.0"
+  }
+}
