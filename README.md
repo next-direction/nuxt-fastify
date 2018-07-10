@@ -1,4 +1,4 @@
-# Full stack project based on nuxt and vue
+# Full stack project based on nuxt and vue [![pipeline status](https://gitlab.projects-by-me.de/playground/nuxt-full-stack/badges/master/pipeline.svg)](https://gitlab.projects-by-me.de/playground/nuxt-full-stack/commits/master)
 
 ## Current components of this stack
 
