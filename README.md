@@ -12,6 +12,7 @@
 
 * LESS through loader
 * ElementUI as UI framework (for tree shaking have a look at pages/index.vue)
+* i18n Support
 
 ### FontAwesome 5.1
 
@@ -20,3 +21,8 @@
 ### Express as server
 
 ### MomentJS
+
+### Testing
+* Mocha as test runner
+    * Server side testing with supertest and expect
+    * Client side testing with expect

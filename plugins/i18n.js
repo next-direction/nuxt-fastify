@@ -22,11 +22,14 @@ export default ({
 
     // try to find previously selected value
     if (process.server) {
-        const cookie = require('cookie');
-        const cookies = cookie.parse(app.context.req.headers.cookie);
 
-        if (cookies.locale) {
-            currentLocale = cookies.locale;
+        if (app.context.req.headers.cookie) {
+            const cookie = require('cookie');
+            const cookies = cookie.parse(app.context.req.headers.cookie);
+
+            if (cookies.locale) {
+                currentLocale = cookies.locale;
+            }
         }
     } else {
         const storageLocale = localStorage.getItem('locale');

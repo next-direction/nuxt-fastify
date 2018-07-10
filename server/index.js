@@ -1,11 +1,17 @@
 
 const express = require('express')
+const bodyParser = require('body-parser')
 const { Nuxt, Builder } = require('nuxt')
 const app = express()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
 
+app.use(bodyParser.json());
 app.set('port', port)
+
+app.get('/api/ping', (req, res) => {
+    res.send('pong');
+});
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
@@ -29,3 +35,5 @@ async function start() {
   console.log('Server listening on http://' + host + ':' + port) // eslint-disable-line no-console
 }
 start()
+
+module.exports = { app };

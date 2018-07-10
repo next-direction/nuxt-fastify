@@ -22,14 +22,21 @@ export const getters = {
 }
 
 export const actions = {
-    nuxtServerInit({ commit }, { req }) {
+    nuxtServerInit({
+        commit
+    }, {
+        req
+    }) {
 
         if (process.server) {
-            const cookie = require('cookie');
-            const cookies = cookie.parse(req.headers.cookie);
 
-            if (cookies.locale) {
-                commit('setLocale', cookies.locale);
+            if (req.headers.cookie) {
+                const cookie = require('cookie');
+                const cookies = cookie.parse(req.headers.cookie);
+
+                if (cookies.locale) {
+                    commit('setLocale', cookies.locale);
+                }
             }
         }
     }

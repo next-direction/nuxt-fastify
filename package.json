@@ -8,13 +8,17 @@
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node server/index.js",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "test-client": "mocha-webpack --require tests/client/setup.js tests/client/**/*.test.js",
+    "test-server": "cross-env NODE_ENV=production mocha --exit tests/server/**/*.test.js",
+    "test": "npm run test-client && npm run test-server"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.1.0",
     "@fortawesome/free-solid-svg-icons": "^5.1.0",
     "@nuxtjs/axios": "^5.0.0",
     "@nuxtjs/moment": "^1.0.0",
+    "body-parser": "^1.18.3",
     "cookie": "^0.3.1",
     "element-ui": "^2.4.3",
     "express": "^4.15.3",
@@ -26,10 +30,17 @@
     "vue-i18n": "^8.0.0"
   },
   "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.20",
     "babel-plugin-component": "^1.1.1",
     "cross-env": "^5.0.1",
+    "expect": "^23.3.0",
+    "jsdom": "^11.11.0",
+    "jsdom-global": "^3.0.2",
     "less": "^3.5.3",
     "less-loader": "^4.1.0",
-    "nodemon": "^1.11.0"
+    "mocha": "^5.2.0",
+    "mocha-webpack": "^1.1.0",
+    "nodemon": "^1.11.0",
+    "supertest": "^3.1.0"
   }
 }
