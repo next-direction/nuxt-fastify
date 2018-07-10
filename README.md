@@ -26,3 +26,4 @@
 * Mocha as test runner
     * Server side testing with supertest and expect
     * Client side testing with expect
+* Integration in GitLab through basic runner setup
