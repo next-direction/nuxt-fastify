@@ -26,4 +26,5 @@
 * Mocha as test runner
     * Server side testing with supertest and expect
     * Client side testing with expect
+        * Because testing components depends on the concrete scenario, check [vue docs](https://vuejs.org/v2/guide/unit-testing.html#Setup-and-Tooling) for details.
 * Integration in GitLab through basic runner setup
