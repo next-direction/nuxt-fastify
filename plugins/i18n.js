@@ -20,22 +20,24 @@ export default ({
 
     let currentLocale = store.state.locale.default;
 
-    // try to find previously selected value
+    // try to find previously selected value on client and server to avoid flickering of translations
     if (process.server) {
 
         if (app.context.req.headers.cookie) {
             const cookie = require('cookie');
             const cookies = cookie.parse(app.context.req.headers.cookie);
+            const vuex = cookies.vuex ? JSON.parse(cookies.vuex) : {};
 
-            if (cookies.locale) {
-                currentLocale = cookies.locale;
+            if (vuex.locale.current) {
+                currentLocale = vuex.locale.current;
             }
         }
     } else {
-        const storageLocale = localStorage.getItem('locale');
+        const persistedStore = localStorage.getItem('vuex');
 
-        if (storageLocale) {
-            currentLocale = storageLocale;
+        if (persistedStore) {
+            const vuex = JSON.parse(persistedStore);
+            currentLocale = vuex.locale.current;
         }
     }
 

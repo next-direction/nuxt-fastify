@@ -47,6 +47,10 @@ module.exports = {
      ** Plugins to load before mounting the App
      */
     plugins: [
+        {
+            src: '~plugins/vuex-persistent.js',
+            ssr: false
+        },
         '~plugins/element-ui',
         '~plugins/filters',
         '~plugins/i18n.js'

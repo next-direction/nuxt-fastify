@@ -1,3 +1,7 @@
+import {
+    resolve
+} from "url";
+
 export const state = () => ({
     people: [{
             id: 1,
@@ -19,7 +23,8 @@ export const state = () => ({
             id: 5,
             name: 'Robert'
         }
-    ]
+    ],
+    test: 0
 })
 
 export const getters = {
@@ -29,9 +34,17 @@ export const getters = {
 }
 
 export const actions = {
+    nuxtServerInit(context, test) {
+        return new Promise((resolve, reject) => {
+            context.commit('test', test);
+            resolve();
+        });
 
+    }
 }
 
 export const mutations = {
-
+    test(state, test) {
+        state.test = test
+    }
 }

@@ -18,7 +18,7 @@
         Count {{ count }}
         <br><br>
         <h3>Button from ElementUI (with tree shaking)</h3>
-        <el-button type="danger">Danger</el-button><br>
+        <el-button type="danger" @click="incrementCounter">Danger</el-button><br>
         <h3>Button used as Nuxt Link</h3>
         <nuxt-link to="/about" tag="el-button" class="el-button--danger">About</nuxt-link><br><br>
         <h3>Icon from FontAwesome 5 (including tree shaking)</h3>
@@ -71,6 +71,11 @@ export default {
     },
     components: {
         Logo
+    },
+    methods: {
+        incrementCounter() {
+            this.$store.commit('incrementCounter');
+        }
     }
 };
 </script>
