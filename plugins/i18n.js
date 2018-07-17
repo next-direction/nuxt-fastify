@@ -9,15 +9,6 @@ export default ({
 }) => {
 
     const locales = store.state.locale.all;
-    const messages = {};
-
-    for (let key in locales) {
-
-        if (locales.hasOwnProperty(key)) {
-            messages[key] = require('~/lang/' + key + '.json');
-        }
-    }
-
     let currentLocale = store.state.locale.default;
 
     // try to find previously selected value on client and server to avoid flickering of translations
@@ -40,6 +31,10 @@ export default ({
             currentLocale = vuex.locale.current;
         }
     }
+
+    const messages = {};
+
+    messages[currentLocale] = require('~/static/lang/' + currentLocale + '.json');
 
     // Set i18n instance on app
     // This way we can use it in middleware and pages asyncData/fetch

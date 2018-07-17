@@ -14,22 +14,44 @@
 <script>
 import {
     mapState
-} from 'vuex';
+} from "vuex";
 
 export default {
     computed: {
-        ...mapState(['locale']),
+        ...mapState(["locale"]),
         selectedLocale: {
             get() {
                 return this.$store.getters.selectedLocale;
             },
             set(locale) {
-                this.$i18n.locale = locale;
-                this.$store.commit('setLocale', locale)
+                if (locale in this.$i18n.messages) {
+                    this.$i18n.locale = locale;
+                    this.$store.commit("setLocale", locale);
+                } else {
+                    this.loadLocaleMessage(locale, (err, message) => {
+                        if (err) {
+                            console.error(err);
+                            return;
+                        }
+                        this.$i18n.setLocaleMessage(locale, message);
+
+                        this.$i18n.locale = locale;
+                        this.$store.commit("setLocale", locale);
+                    });
+                }
             }
         }
+    },
+    methods: {
+        loadLocaleMessage(locale, cb) {
+            this.$axios.$get(`/lang/${locale}.json`).then((res) => {
+                cb(null, res);
+            }).catch((e) => {
+                cb(e);
+            });
+        }
     }
-}
+};
 </script>
 
 <style>
