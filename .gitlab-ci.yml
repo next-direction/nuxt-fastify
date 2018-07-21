@@ -3,7 +3,7 @@ stages:
     - deploy
 
 variables:
-    APP_NAME: nuxt-full-stack
+    APP_NAME: nuxt-full-fastify
 
 test_client:
     stage: test
