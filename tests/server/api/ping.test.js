@@ -1,22 +1,19 @@
 const expect = require('expect')
 const request = require('supertest')
 
-const { app } = require('../../../server/index')
+const createServer = require('../../../server/create-server')
 
 describe('Server', () => {
-    it('Test construct', (done) => {
-        request(app)
-        .get('/api/ping')
-        .expect(200)
-        .expect((res) => {
-            expect(res.text).toBe('pong');
-        })
-        .end((err, res) => {
-            if (err) {
-                return done(err);
-            }
+    it('Test construct', async () => {
+        const app = await createServer();
 
-            done();
-        })
+        await app.ready();
+
+        const response = await request(app.server)
+            .get('/api/ping')
+            .expect(200)
+            .expect((res) => {
+                expect(res.text).toBe('pong');
+            })
     });
 })
