@@ -53,7 +53,8 @@ module.exports = {
         },
         '~plugins/element-ui',
         '~plugins/filters',
-        '~plugins/i18n.js'
+        '~plugins/i18n.js',
+        '~plugins/moment.js'
     ],
 
     /*
@@ -67,10 +68,7 @@ module.exports = {
                 component: 'fa',
                 imports: []
             }
-        ],
-        [
-            '@nuxtjs/moment', ['de']
-        ],
+        ]
     ],
     /*
      ** Axios module configuration

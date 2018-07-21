@@ -22,7 +22,7 @@
 * Tree shaking (look at pages/index.vue for example)
 
 ### Fastify as server
-* Requests to /api will be handled direclty through fastify
+* Requests to /api will be handled directly through fastify
 * All other requests will be handled by nuxt
 
 ### MomentJS
@@ -35,7 +35,10 @@
 * Integration in GitLab through basic runner setup
 * Test coverage through GitLab with Istanbul / NYC
 
-## Usage
+## Usage of the included components
+See [this page](USAGE.md) for information on how to use components of the stack
+
+## Usage of this branch
 
 Same as for all project including node server. After cloning the repository, go to the directory and execute:
 
