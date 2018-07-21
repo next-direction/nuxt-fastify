@@ -12,6 +12,6 @@ async function listen() {
     const port = process.env.PORT || 3000
 
     app.listen(port, host, () => {
-        console.log('Server listening on `localhost:' + port + '`.')
+        console.log(`Server listening on http://${host}:${port}`)
     })
 }

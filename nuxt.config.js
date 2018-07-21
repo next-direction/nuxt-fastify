@@ -8,7 +8,7 @@ module.exports = {
      ** Headers of the page
      */
     head: {
-        title: 'Full Stack Example',
+        title: 'Full Stack Clean',
         meta: [{
                 charset: 'utf-8'
             },

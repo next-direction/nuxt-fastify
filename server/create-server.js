@@ -15,15 +15,16 @@ async function buildServer() {
         await new Builder(nuxt).build()
     }
 
-    app.get('/api/ping', (request, reply) => {
-        reply.send('pong')
-    })
+   // define routes for api here (maybe in extra files)
 
     app.use((req, res, next) => {
-        console.log(req.url);
+
+        // let fastify handle api requests
         if (req.url.startsWith('/api')) {
             next();
         } else {
+
+            // nuxt handles all other requests
             return nuxt.render(req, res);
         }
     });
