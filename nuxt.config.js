@@ -101,7 +101,8 @@ module.exports = {
         plugins: [
             new webpack.ProvidePlugin({
                 '_': 'lodash'
-            })
+            }),
+            new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en|de/)
         ]
     },
     transition: 'fade'

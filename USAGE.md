@@ -160,6 +160,10 @@ And this is how you can use it inside the template code of your component:
 <p>{{ $t('common.back') }}</p>
 ```
 
+New locales can be added in `store/index.js` in the `locale.all` state. Make sure to add the locale to webpack plugin in `nuxt.config.js` too as mentioned in the store.
+
+**Limitation:** Although locale for Moment Timezones will be changed too, you don't see the change directly. You have to navigate to another page first. Also localized dates in layouts won't change until a real reload of the page or if you navigate to a page with a different layout. This is due to reactivity system of VueJS.
+
 ### FontAwesome 5
 ---
 Currently version 5.1 of free icon set is integrated. There is a bit of an overhead if you like to use the icons because you have to import each icon seperatly to enable tree shaking which only includes icons you really use in the final bundle.

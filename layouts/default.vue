@@ -24,7 +24,7 @@ export default {
             set(locale) {
                 if (locale in this.$i18n.messages) {
                     this.$i18n.locale = locale;
-                    this.$store.commit("setLocale", locale);
+                    this.changeMomentLocale(locale);
                 } else {
                     this.loadLocaleMessage(locale, (err, message) => {
                         if (err) {
@@ -35,18 +35,25 @@ export default {
 
                         this.$i18n.locale = locale;
                         this.$store.commit("setLocale", locale);
+                        this.changeMomentLocale(locale);
                     });
                 }
             }
         }
     },
     methods: {
+        changeMomentLocale(locale) {
+            this.$moment.locale(locale);
+        },
         loadLocaleMessage(locale, cb) {
-            this.$axios.$get(`/lang/${locale}.json`).then((res) => {
-                cb(null, res);
-            }).catch((e) => {
-                cb(e);
-            });
+            this.$axios
+                .$get(`/lang/${locale}.json`)
+                .then(res => {
+                    cb(null, res);
+                })
+                .catch(e => {
+                    cb(e);
+                });
         }
     }
 };

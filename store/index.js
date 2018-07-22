@@ -4,6 +4,7 @@ export const state = () => ({
     locale: {
         current: '',
         default: 'de',
+        // if you add new locales here, make sure you add it to nuxt.config.js in wepack ContextReplacementPlugin config otherwise moment won't know it
         all: {
             'en': 'English',
             'de': 'Deutsch'
@@ -13,7 +14,7 @@ export const state = () => ({
 
 export const getters = {
     selectedLocale(state) {
-        return state.locale.current !== '' ? state.locale.current : state.locale.default;
+        return state.locale.current !== '' ? state.locale.current : state.locale.default
     }
 }
 
