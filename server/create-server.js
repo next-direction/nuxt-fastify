@@ -1,7 +1,7 @@
 const Fastify = require('fastify')
 const {
     Nuxt, Builder
-} = require('nuxt')
+} = require('nuxt-edge')
 
 async function buildServer() {
     const app = Fastify()

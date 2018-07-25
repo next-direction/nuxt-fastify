@@ -81,7 +81,7 @@ module.exports = {
      ** Build configuration
      */
     build: {
-        maxChunkSize: 300000,
+        maxChunkSize: 200000,
         /*
          ** You can extend webpack config here
          */
