@@ -1,10 +1,3 @@
-const {
-    Nuxt,
-    Builder
-} = require('nuxt')
-
-listen()
-
 async function listen() {
     const createServer = require('./create-server')
     const app = await createServer();
@@ -15,3 +8,5 @@ async function listen() {
         console.log(`Server listening on http://${host}:${port}`)
     })
 }
+
+listen()
