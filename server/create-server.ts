@@ -16,10 +16,6 @@ async function buildServer() {
     }
 
     // define routes for api here (maybe in extra files)
-    app.get('/api/ping', (request, reply) => {
-        reply.send('pong')
-    })
-
 
     app.use((req, res, next) => {
 

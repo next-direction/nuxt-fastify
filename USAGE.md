@@ -317,6 +317,51 @@ It can be a bit confusing if you look at this example, because `expect` is used 
 
 Again for the structure of the tests you should keep the same folder structure inside the `tests/server/ ` directory as you use inside the `server/api/` folder. All files with name `*.test.js` are considered as test files.
 
+## Using Sockets
+===
+
+If you need sockets for your project I recommend usage of fastify-ws plugin. You can check the documentation [here](https://www.npmjs.com/package/fastify-ws) to learn more.
+
+Basically you have to install the package first with this command
+
+```shell
+npm i -S fastify-ws
+```
+
+You can then add the following code to `server/create-server.ts` to start websocket server:
+
+```javascript
+// socket integration
+app.register(require('fastify-ws'));
+app.ready(err => {
+    if (err) {
+        throw err
+    }
+
+    console.log('Server started.')
+
+    app.ws
+        .on('connection', socket => {
+            console.log('Client connected.')
+            socket.on('message', msg => socket.send(msg)) // Creates an echo server
+            socket.on('close', () => console.log('Client disconnected.'))
+        })
+})
+```
+
+Of course the `console.log` calls are optional but they help during development.
+
+In clients you can use the following code to test your websocket:
+
+```javascript
+const host = location.origin.replace(/^http/, 'ws')
+const ws = new WebSocket(host)
+ws.onmessage = msg => console.log(msg.data)
+ws.send('WebSockets are awesome!')
+```
+
+You should see the message you sent is being printed to the console!
+
 ## Bonus: CI/CD using [GitLab](https://about.gitlab.com/) and [Dokku](http://dokku.viewdocs.io/dokku/getting-started/installation/)
 
 I personally use GitLab as versioning tool and it has great integration of continuous integration and deployment. In this section I'd like to share a few insights about configuring it using this stack. For me it works like a charm and you can even use badges showing the build state and test coverage.
