@@ -1,6 +1,19 @@
 # Stack Usage Examples
 This page should give you an overview of how to use the components of this stack. You can also have a look at the master branch of the original nuxt-full-fastify project because it still contains most of the examples.
 
+## TypeScript
+===
+
+Because the stack in this branch uses TypeScript for everything, it is important to use it correctly. Of course you should know how to use TypeScript in general. In addition, there are a lot of decorators you can use to define Vue and Vuex parts as normal classes. Please have a look at the following documentations for more details about the correct usage of TypeScript in Vue(x) in combination with Nuxt:
+
+| Type | Description | |
+|---|---|---|
+| TypeScript Handbook | Get a general overview of how TypeScript works | [Link](https://www.typescriptlang.org/docs/handbook/basic-types.html) |
+| Vue Class Component | Describes basic usage of decorators and for what they are used | [Link](https://github.com/vuejs/vue-class-component)
+| Nuxt Class Component | Learn about additions that Nuxt adds to classes (especially asyncData and fetch) | [Link](https://github.com/nuxt-community/nuxt-class-component)
+|Nuxt Property Decorator | Overview of all availyble property decorator and how to use them | [Link](https://github.com/nuxt-community/nuxt-property-decorator)
+| Vuex Class Decorator | See how to use decorator related to Vuex store | [Link](https://github.com/ktsn/vuex-class)
+
 ## Nuxt
 ===
 

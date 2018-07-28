@@ -1,46 +1,62 @@
 {
-  "name": "full-stack",
-  "version": "1.0.0",
-  "description": "A full stack example application",
-  "author": "Manuel Hesselbarth",
-  "private": true,
-  "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
-    "build": "nuxt build",
-    "start": "cross-env NODE_ENV=production node server/index.js",
-    "generate": "nuxt generate",
-    "test-client": "nyc mocha-webpack --require tests/client/setup.js tests/client/**/*.test.js",
-    "test-server": "cross-env NODE_ENV=test nyc mocha --exit tests/server/**/*.test.js",
-    "test": "nyc npm run test-client && nyc npm run test-server"
-  },
-  "dependencies": {
-    "@fortawesome/free-brands-svg-icons": "^5.1.0",
-    "@fortawesome/free-solid-svg-icons": "^5.1.0",
-    "@nuxtjs/axios": "^5.0.0",
-    "cookie": "^0.3.1",
-    "element-ui": "^2.4.3",
-    "fastify": "^1.8.0",
-    "lodash": "^4.17.10",
-    "moment-timezone": "^0.5.21",
-    "nuxt-edge": "*",
-    "nuxt-fontawesome": "^0.3.0",
-    "tiny-cookie": "^2.1.2",
-    "vue-i18n": "^8.0.0",
-    "vuex-persistedstate": "^2.5.4"
-  },
-  "devDependencies": {
-    "@vue/test-utils": "^1.0.0-beta.20",
-    "babel-plugin-component": "^1.1.1",
-    "cross-env": "^5.0.1",
-    "expect": "^23.3.0",
-    "jsdom": "^11.11.0",
-    "jsdom-global": "^3.0.2",
-    "less": "^3.5.3",
-    "less-loader": "^4.1.0",
-    "mocha": "^5.2.0",
-    "mocha-webpack": "^1.1.0",
-    "nodemon": "^1.11.0",
-    "nyc": "^12.0.2",
-    "supertest": "^3.1.0"
-  }
+    "name": "full-stack",
+    "version": "1.0.0",
+    "description": "A full stack example application",
+    "author": "Manuel Hesselbarth",
+    "private": true,
+    "scripts": {
+        "dev": "cross-env NODE_ENV=development nodemon --watch server",
+        "build": "node -r ts-node/register node_modules/nuxt-edge/bin/nuxt build -c nuxt.config.ts",
+        "start": "cross-env NODE_ENV=production ts-node server/index.ts",
+        "test-client": "cross-env NODE_ENV=test nyc mocha-webpack -r ts-node/register -r tests/client/setup.ts --webpack-config mocha.webpack.config.js tests/client/**/*.test.ts",
+        "test-server": "cross-env NODE_ENV=test nyc mocha -r ts-node/register --exit tests/server/**/*.test.ts",
+        "test": "nyc npm run test-client && nyc npm run test-server"
+    },
+    "nyc": {
+        "exclude": [
+            "**/*.test.ts",
+            ".tmp",
+            "bootstrap"
+        ]
+    },
+    "dependencies": {
+        "@fortawesome/free-brands-svg-icons": "^5.1.0",
+        "@fortawesome/free-solid-svg-icons": "^5.1.0",
+        "@nuxtjs/axios": "^5.0.0",
+        "cookie": "^0.3.1",
+        "element-ui": "^2.4.3",
+        "fastify": "^1.8.0",
+        "lodash": "^4.17.10",
+        "moment-timezone": "^0.5.21",
+        "nuxt-edge": "*",
+        "nuxt-fontawesome": "^0.3.0",
+        "nuxt-property-decorator": "^1.2.0",
+        "tiny-cookie": "^2.1.2",
+        "vue-i18n": "^8.0.0",
+        "vuex-class": "^0.3.1",
+        "vuex-persistedstate": "^2.5.4"
+    },
+    "devDependencies": {
+        "@types/expect": "^1.20.3",
+        "@types/mocha": "^5.2.5",
+        "@types/moment-timezone": "^0.5.6",
+        "@types/node": "^10.5.4",
+        "@types/supertest": "^2.0.5",
+        "@vue/test-utils": "^1.0.0-beta.20",
+        "babel-plugin-component": "^1.1.1",
+        "cross-env": "^5.0.1",
+        "expect": "^23.3.0",
+        "jsdom": "^11.11.0",
+        "jsdom-global": "^3.0.2",
+        "less": "^3.5.3",
+        "less-loader": "^4.1.0",
+        "mocha": "^5.2.0",
+        "mocha-webpack": "^2.0.0-beta.0",
+        "nodemon": "^1.11.0",
+        "nyc": "^12.0.2",
+        "supertest": "^3.1.0",
+        "ts-loader": "^4.4.2",
+        "ts-node": "^7.0.0",
+        "typescript": "^2.9.2"
+    }
 }

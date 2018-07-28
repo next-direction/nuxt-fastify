@@ -12,7 +12,7 @@ export default ({
     let currentLocale = store.state.locale.default;
 
     // try to find previously selected value on client and server to avoid flickering of translations
-    if (process.server) {
+    if ('undefined' === typeof window) {
 
         if (app.context.req.headers.cookie) {
             const cookie = require('cookie');
@@ -31,6 +31,8 @@ export default ({
             currentLocale = vuex.locale.current;
         }
     }
+
+    store.commit('setLocale', currentLocale)
 
     const messages = {};
 

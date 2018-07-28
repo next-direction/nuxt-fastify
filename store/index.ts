@@ -13,7 +13,7 @@ export const state = () => ({
 })
 
 export const getters = {
-    selectedLocale(state) {
+    selectedLocale(state): string {
         return state.locale.current !== '' ? state.locale.current : state.locale.default
     }
 }

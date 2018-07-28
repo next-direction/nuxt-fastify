@@ -4,6 +4,8 @@
 
 ## Current components of this stack
 
+**This branch is currently in beta**
+
 ### Nuxt.js
 
 * Axios as a module

@@ -46,15 +46,14 @@ module.exports = {
     /*
      ** Plugins to load before mounting the App
      */
-    plugins: [
-        {
-            src: '~plugins/vuex-persistent.js',
+    plugins: [{
+            src: '~plugins/vuex-persistent',
             ssr: false
         },
         '~plugins/element-ui',
         '~plugins/filters',
-        '~plugins/i18n.js',
-        '~plugins/moment.js'
+        '~plugins/i18n',
+        '~plugins/moment'
     ],
 
     /*
@@ -63,13 +62,14 @@ module.exports = {
     modules: [
         // Doc: https://github.com/nuxt-community/axios-module#usage
 
-        '@nuxtjs/axios', [
-            'nuxt-fontawesome', {
-                component: 'fa',
-                imports: []
-            }
-        ]
+        '@nuxtjs/axios',
+        'nuxt-fontawesome',
+        "./modules/typescript.ts"
     ],
+    'nuxt-fontawesome': {
+        component: 'fa',
+        imports: []
+    },
     /*
      ** Axios module configuration
      */

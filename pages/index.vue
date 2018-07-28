@@ -8,25 +8,23 @@
 </section>
 </template>
 
-<script>
-export default {
-
-};
+<script lang="ts">
+export default {};
 </script>
 
 <style scoped>
 .container {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .title {
-    display: block;
-    font-weight: 300;
-    font-size: 100px;
-    letter-spacing: 1px;
+  display: block;
+  font-weight: 300;
+  font-size: 100px;
+  letter-spacing: 1px;
 }
 </style>
