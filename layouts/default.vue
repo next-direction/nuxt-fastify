@@ -23,9 +23,14 @@ export default class Default extends Vue {
   }
 
   set selectedLocale(locale) {
-    if (locale in this.$i18n.messages) {
+    const setLocale = locale => {
       this.$i18n.locale = locale;
       this.changeMomentLocale(locale);
+      this.$store.commit("setLocale", locale);
+    };
+
+    if (locale in this.$i18n.messages) {
+      setLocale(locale);
     } else {
       this.loadLocaleMessage(locale, (err, message) => {
         if (err) {
@@ -34,9 +39,7 @@ export default class Default extends Vue {
         }
         this.$i18n.setLocaleMessage(locale, message);
 
-        this.$i18n.locale = locale;
-        this.$store.commit("setLocale", locale);
-        this.changeMomentLocale(locale);
+        setLocale(locale);
       });
     }
   }
