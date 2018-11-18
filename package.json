@@ -11,7 +11,8 @@
         "start": "cross-env NODE_ENV=production ts-node server/index.ts",
         "test-client": "cross-env NODE_ENV=test nyc mocha-webpack -r ts-node/register -r client/tests/setup.ts --webpack-config client/tests/mocha.webpack.config.js client/tests/**/*.test.ts",
         "test-server": "cross-env NODE_ENV=test nyc mocha -r ts-node/register -r server/tests/setup.ts --exit --timeout 5000 server/tests/**/*.test.ts",
-        "test": "npm run test-client && npm run test-server"
+        "test": "npm run test-client && npm run test-server",
+        "upgrade": "npm-check --update"
     },
     "nyc": {
         "include": [
@@ -77,6 +78,7 @@
         "mocha": "^5.2.0",
         "mocha-webpack": "^2.0.0-beta.0",
         "nodemon": "^1.18.4",
+        "npm-check": "^5.9.0",
         "nyc": "^13.0.1",
         "supertest": "^3.3.0",
         "ts-loader": "^5.1.1",
