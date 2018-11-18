@@ -2,9 +2,9 @@
 [![pipeline status](http://gitlab.projects-by-me.de/playground/nuxt-full-fastify/badges/master/pipeline.svg)](http://gitlab.projects-by-me.de/playground/nuxt-full-fastify/commits/master)
  [![coverage report](http://gitlab.projects-by-me.de/playground/nuxt-full-fastify/badges/master/coverage.svg)](http://gitlab.projects-by-me.de/playground/nuxt-full-fastify/commits/master)
 
-## Current components of this stack
+ **Server already tested in other projects. Client untested so far**
 
-**This branch is currently in beta**
+## Current components of this stack
 
 ### Nuxt.js
 

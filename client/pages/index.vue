@@ -2,7 +2,7 @@
 <section class="container">
     <div>
         <h1 class="title">
-            Fastify/Nuxt-Edge Clean
+            Fastify/Nuxt 2 Clean
         </h1>
     </div>
 </section>

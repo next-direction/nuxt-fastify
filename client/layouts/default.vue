@@ -11,50 +11,51 @@
 
 <script lang="ts">
 import { Component, Vue } from "nuxt-property-decorator";
-import { State, Getter, Action, Mutation, namespace } from "vuex-class";
 import { mapState } from "vuex";
+import { Action, Getter, Mutation, namespace, State } from "vuex-class";
 
 @Component
 export default class Default extends Vue {
-  @State("locale") stateLocale;
+  @State("locale") public stateLocale;
 
   get selectedLocale() {
     return this.$store.getters.selectedLocale;
   }
 
   set selectedLocale(locale) {
-    const setLocale = locale => {
+    const setLocale = () => {
       this.$i18n.locale = locale;
       this.changeMomentLocale(locale);
       this.$store.commit("setLocale", locale);
     };
 
     if (locale in this.$i18n.messages) {
-      setLocale(locale);
+      setLocale();
     } else {
       this.loadLocaleMessage(locale, (err, message) => {
         if (err) {
+          // tslint:disable-next-line:no-console
           console.error(err);
           return;
         }
         this.$i18n.setLocaleMessage(locale, message);
 
-        setLocale(locale);
+        setLocale();
       });
     }
   }
 
-  changeMomentLocale(locale) {
+  public changeMomentLocale(locale) {
     this.$moment.locale(locale);
   }
 
-  loadLocaleMessage(locale, cb) {
+  public loadLocaleMessage(locale, cb) {
     this.$axios
       .$get(`/lang/${locale}.json`)
-      .then(res => {
+      .then((res) => {
         cb(null, res);
       })
-      .catch(e => {
+      .catch((e) => {
         cb(e);
       });
   }

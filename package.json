@@ -3,60 +3,85 @@
     "version": "1.0.0",
     "description": "A full stack example application",
     "author": "Manuel Hesselbarth",
+    "license": "MIT",
     "private": true,
     "scripts": {
-        "dev": "cross-env NODE_ENV=development nodemon --watch server",
-        "build": "node -r ts-node/register node_modules/nuxt-edge/bin/nuxt build -c nuxt.config.ts",
+        "dev": "cross-env NODE_ENV=development nodemon",
+        "build": "node -r ts-node/register node_modules/nuxt/bin/nuxt build -c nuxt.config.ts",
         "start": "cross-env NODE_ENV=production ts-node server/index.ts",
-        "test-client": "cross-env NODE_ENV=test nyc mocha-webpack -r ts-node/register -r tests/client/setup.ts --webpack-config mocha.webpack.config.js tests/client/**/*.test.ts",
-        "test-server": "cross-env NODE_ENV=test nyc mocha -r ts-node/register --exit tests/server/**/*.test.ts",
-        "test": "nyc npm run test-client && nyc npm run test-server"
+        "test-client": "cross-env NODE_ENV=test nyc mocha-webpack -r ts-node/register -r client/tests/setup.ts --webpack-config client/tests/mocha.webpack.config.js client/tests/**/*.test.ts",
+        "test-server": "cross-env NODE_ENV=test nyc mocha -r ts-node/register -r server/tests/setup.ts --exit --timeout 5000 server/tests/**/*.test.ts",
+        "test": "npm run test-client && npm run test-server"
     },
     "nyc": {
+        "include": [
+            "**/*.ts"
+        ],
+        "extension": [
+            ".ts"
+        ],
+        "require": [
+            "ts-node/register"
+        ],
         "exclude": [
+            "*.d.ts",
             "**/*.test.ts",
             ".tmp",
-            "bootstrap"
-        ]
+            "bootstrap",
+            "client/modules",
+            "server/create-server.ts"
+        ],
+        "reporter": [
+            "html",
+            "text"
+        ],
+        "report-dir": "./.coverage"
     },
     "dependencies": {
-        "@fortawesome/free-brands-svg-icons": "^5.1.0",
-        "@fortawesome/free-solid-svg-icons": "^5.1.0",
-        "@nuxtjs/axios": "^5.0.0",
+        "@fortawesome/free-brands-svg-icons": "^5.3.1",
+        "@fortawesome/free-solid-svg-icons": "^5.3.1",
+        "@nuxtjs/axios": "^5.3.2",
+        "chalk": "^2.4.1",
+        "config": "^2.0.0",
         "cookie": "^0.3.1",
-        "element-ui": "^2.4.3",
-        "fastify": "^1.8.0",
-        "lodash": "^4.17.10",
+        "element-ui": "^2.4.7",
+        "fastify": "^1.11.2",
+        "fastify-plugin": "^1.2.1",
+        "fastify-sensible": "^0.2.0",
+        "lodash": "^4.17.11",
         "moment-timezone": "^0.5.21",
-        "nuxt-edge": "*",
+        "nuxt": "^2.0.0",
         "nuxt-fontawesome": "^0.3.0",
         "nuxt-property-decorator": "^1.2.0",
+        "reflect-metadata": "^0.1.12",
         "tiny-cookie": "^2.1.2",
-        "vue-i18n": "^8.0.0",
+        "vue-i18n": "^8.1.0",
         "vuex-class": "^0.3.1",
         "vuex-persistedstate": "^2.5.4"
     },
     "devDependencies": {
         "@types/expect": "^1.20.3",
+        "@types/lodash": "^4.14.116",
         "@types/mocha": "^5.2.5",
-        "@types/moment-timezone": "^0.5.6",
-        "@types/node": "^10.5.4",
-        "@types/supertest": "^2.0.5",
-        "@vue/test-utils": "^1.0.0-beta.20",
+        "@types/moment-timezone": "^0.5.9",
+        "@types/node": "^10.10.3",
+        "@types/supertest": "^2.0.6",
+        "@vue/test-utils": "^1.0.0-beta.25",
         "babel-plugin-component": "^1.1.1",
         "cross-env": "^5.0.1",
-        "expect": "^23.3.0",
-        "jsdom": "^11.11.0",
+        "expect": "^23.6.0",
+        "jsdom": "^13.0.0",
         "jsdom-global": "^3.0.2",
         "less": "^3.5.3",
         "less-loader": "^4.1.0",
         "mocha": "^5.2.0",
         "mocha-webpack": "^2.0.0-beta.0",
-        "nodemon": "^1.11.0",
-        "nyc": "^12.0.2",
-        "supertest": "^3.1.0",
-        "ts-loader": "^4.4.2",
-        "ts-node": "^7.0.0",
-        "typescript": "^2.9.2"
+        "nodemon": "^1.18.4",
+        "nyc": "^13.0.1",
+        "supertest": "^3.3.0",
+        "ts-loader": "^5.1.1",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.11.0",
+        "typescript": "^3.0.3"
     }
 }

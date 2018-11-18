@@ -1,21 +1,21 @@
-import Vue from 'vue'
-import VueI18n from 'vue-i18n'
+import Vue from "vue";
+import VueI18n from "vue-i18n";
 
-Vue.use(VueI18n)
+Vue.use(VueI18n);
 
 export default ({
     app,
-    store
+    store,
 }) => {
 
     const locales = store.state.locale.all;
     let currentLocale = store.state.locale.default;
 
     // try to find previously selected value on client and server to avoid flickering of translations
-    if ('undefined' === typeof window) {
+    if ("undefined" === typeof window) {
 
         if (app.context.req.headers.cookie) {
-            const cookie = require('cookie');
+            const cookie = require("cookie");
             const cookies = cookie.parse(app.context.req.headers.cookie);
             const vuex = cookies.vuex ? JSON.parse(cookies.vuex) : {};
 
@@ -24,7 +24,7 @@ export default ({
             }
         }
     } else {
-        const persistedStore = localStorage.getItem('vuex');
+        const persistedStore = localStorage.getItem("vuex");
 
         if (persistedStore) {
             const vuex = JSON.parse(persistedStore);
@@ -32,17 +32,17 @@ export default ({
         }
     }
 
-    store.commit('setLocale', currentLocale)
+    store.commit("setLocale", currentLocale);
 
     const messages = {};
 
-    messages[currentLocale] = require('~/static/lang/' + currentLocale + '.json');
+    messages[currentLocale] = require("~/static/lang/" + currentLocale + ".json");
 
     // Set i18n instance on app
     // This way we can use it in middleware and pages asyncData/fetch
     app.i18n = new VueI18n({
-        locale: currentLocale,
         fallbackLocale: store.state.locale.default,
-        messages
-    })
-}
+        locale: currentLocale,
+        messages,
+    });
+};
