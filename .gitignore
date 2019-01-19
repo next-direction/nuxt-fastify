@@ -3,17 +3,20 @@ node_modules
 
 # logs
 npm-debug.log
+server.log
 
 # Nuxt build
 .nuxt
 
 # NYC Code coverage output
 .nyc_output
+.coverage
 
 # Nuxt generate
 dist
 
 # IDE
 .idea
+.vscode
 
 package-lock.json

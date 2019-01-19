@@ -1,6 +1,6 @@
 # Full stack project based on nuxt and vue 
-[![pipeline status](http://gitlab.projects-by-me.de/playground/nuxt-full-fastify/badges/master/pipeline.svg)](http://gitlab.projects-by-me.de/playground/nuxt-full-fastify/commits/master)
- [![coverage report](http://gitlab.projects-by-me.de/playground/nuxt-full-fastify/badges/master/coverage.svg)](http://gitlab.projects-by-me.de/playground/nuxt-full-fastify/commits/master)
+
+This stack uses TypeScript!
 
 ## Current components of this stack
 
@@ -35,11 +35,10 @@
 * Integration in GitLab through basic runner setup
 * Test coverage through GitLab with Istanbul / NYC
 
-# New projects
+## Usage of the included components
+See [this page](USAGE.md) for information on how to use components of the stack
 
-If you like to start new projects with this stack I recommend using the `feature/clean` branch. All the examples are cleaned and there is a `USAGE.md` file that shows you how to use the components.
-
-# Usage
+## Usage of this branch
 
 Same as for all project including node server. After cloning the repository, go to the directory and execute:
 

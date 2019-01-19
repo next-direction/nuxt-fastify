@@ -1,0 +1,5 @@
+{
+    "watch": ["*"],
+    "ext": "ts",
+    "exec": "node -r ts-node/register server/index.ts -c nuxt.config.ts"
+}
