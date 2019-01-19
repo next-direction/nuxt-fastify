@@ -1,8 +1,6 @@
 # Full stack project based on nuxt and vue 
-[![pipeline status](http://gitlab.projects-by-me.de/playground/nuxt-full-fastify/badges/master/pipeline.svg)](http://gitlab.projects-by-me.de/playground/nuxt-full-fastify/commits/master)
- [![coverage report](http://gitlab.projects-by-me.de/playground/nuxt-full-fastify/badges/master/coverage.svg)](http://gitlab.projects-by-me.de/playground/nuxt-full-fastify/commits/master)
 
- **Server already tested in other projects. Client untested so far**
+This stack uses TypeScript!
 
 ## Current components of this stack
 
