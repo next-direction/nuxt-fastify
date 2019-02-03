@@ -7,8 +7,6 @@ export default ({
     app,
     store,
 }) => {
-
-    const locales = store.state.locale.all;
     let currentLocale = store.state.locale.default;
 
     // try to find previously selected value on client and server to avoid flickering of translations
